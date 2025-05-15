@@ -1,16 +1,17 @@
 # Apollo-Blue
-IOT Guitar Tuner
+Apollo Tuna: IOT Guitar Tuner
 
 ## Project Description
-
+Explaining the project
 
 ## Project Block Diagram
-![image](Images/Proj.drawio.png)
+![Project | 850](Images/Proj.drawio.png)
 
 ## DIKW Pyramid Abstraction
 
 ## System Integration
 
 ## Wireless Network Communications
+![Network | 700](Images/Network.png)
 
 ## Deliverables and Key Performance Indicator
