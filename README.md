@@ -5,7 +5,7 @@ IOT Guitar Tuner
 
 
 ## Project Block Diagram
-![ALT](Images/project_diagram_BG)![[Proj.drawio.png]]
+![[Proj.drawio.png]]
 
 ## DIKW Pyramid Abstraction
 
