@@ -7,34 +7,34 @@
         <mxCell id="_XNufoT1EDonPCBG201--14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;exitX=0.948;exitY=0.526;exitDx=0;exitDy=0;exitPerimeter=0;dashed=1;" edge="1" parent="1" source="_XNufoT1EDonPCBG201--5" target="_XNufoT1EDonPCBG201--11">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="490" y="307" />
-              <mxPoint x="490" y="360" />
-              <mxPoint x="640" y="360" />
+              <mxPoint x="490" y="187" />
+              <mxPoint x="490" y="240" />
+              <mxPoint x="640" y="240" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--5" value="MQTT Broker&lt;div&gt;EMQX&lt;/div&gt;" style="html=1;verticalLabelPosition=middle;align=center;labelBackgroundColor=none;verticalAlign=middle;strokeWidth=2;strokeColor=light-dark(#0080F0,#B3B3B3);shadow=0;dashed=0;shape=mxgraph.ios7.icons.cloud;fillColor=none;labelPosition=center;" vertex="1" parent="1">
-          <mxGeometry x="320" y="260" width="150" height="90" as="geometry" />
+          <mxGeometry x="320" y="140" width="150" height="90" as="geometry" />
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--8" value="Device Monitor" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;outlineConnect=0;align=center;shape=mxgraph.office.devices.laptop;fontSize=11;" vertex="1" parent="1">
-          <mxGeometry x="30" y="420" width="140" height="90" as="geometry" />
+          <mxGeometry x="30" y="300" width="140" height="90" as="geometry" />
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--11" value="IOT Device Dashboard" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#434445;aspect=fixed;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;shape=mxgraph.vvd.nsx_dashboard;" vertex="1" parent="1">
-          <mxGeometry x="610" y="400" width="118.28" height="110" as="geometry" />
+          <mxGeometry x="610" y="280" width="118.28" height="110" as="geometry" />
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;curved=1;entryX=0.005;entryY=0.814;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="_XNufoT1EDonPCBG201--8" target="_XNufoT1EDonPCBG201--5">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="140" y="370" />
-              <mxPoint x="321" y="370" />
+              <mxPoint x="140" y="250" />
+              <mxPoint x="321" y="250" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--15" value="Publisher&lt;div&gt;Topic/tuna&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="190" y="330" width="80" height="40" as="geometry" />
+          <mxGeometry x="190" y="210" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="_XNufoT1EDonPCBG201--16" value="Subscriber&lt;div&gt;Topic/tuna&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;rotation=0;" vertex="1" parent="1">
-          <mxGeometry x="520" y="320" width="80" height="40" as="geometry" />
+          <mxGeometry x="520" y="200" width="80" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
