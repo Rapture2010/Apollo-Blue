@@ -8,7 +8,14 @@ The Apollo Blue Guitar Tuna (ABGT) will revolutionise the music industry, by dep
 ![Project | 900](Images/Proj.drawio.png)
 
 ## DIKW Pyramid Abstraction
-![DIKW | 500](Images/DIKW.png)
+<p align="center">
+  <img src="Images/DIKW.png" 
+		  width="500"
+		  height="500" 
+		  style="display: block; margin: 0 auto"/>
+</p>
+
+
 
 ## System Integration
 The system seen in the project block diagram has 3 types of communications systems and represented in their respective comms method. Referring to the Wireless Network Communications section showing how each comms system is integrated, on the hardware front the "Mobile Node" will be a NRF528DK with a Microphone (Audio Sensor) acting as the peripheral to consistently stream audio data to the "Base Node" running a locally trained Machine Learning Module on Edge Impulse. Finally the results will be serially sent to the Device Monitor i.e the PC as a JSON Packet and in tern sent to the device dashboard as explained in the network architecture diagram.  
