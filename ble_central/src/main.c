@@ -7,6 +7,7 @@
 #include "msgq.h"
 
 #define CMD_BUFF_LEN 20
+char* note = NULL;
 
 LOG_MODULE_REGISTER(tune_cmd, LOG_LEVEL_DBG);
 
@@ -39,7 +40,7 @@ static int tune_cmd(const struct shell *shell, size_t argc, char **argv)
 {
     if (argc < 2 || argc > 3) {
         shell_print(shell, "Usage:");
-        shell_print(shell, "  tune t <E2|A2|D3|G3|B3|E4>");
+        shell_print(shell, "  tune t <EL|A|D|G|B|EH>");
         shell_print(shell, "  tune r");
         shell_print(shell, "  tune s");
         return -EINVAL;
@@ -49,23 +50,23 @@ static int tune_cmd(const struct shell *shell, size_t argc, char **argv)
     const char *note = argv[2];
 
     if (strncmp(mode, "t", 1) == 0) {
-        if (strncmp(note, "E2", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for E2 tune...");
+        if (strncmp(note, "EL", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for EL tune...");
             send_messagef("t %s\n", note);
-        } else if (strncmp(note, "A2", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for A2 tune...");
+        } else if (strncmp(note, "A", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for A tune...");
             send_messagef("t %s\n", note);
-        } else if (strncmp(note, "D3", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for D3 tune...");
+        } else if (strncmp(note, "D", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for D tune...");
             send_messagef("t %s\n", note);
-        } else if (strncmp(note, "G3", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for G3 tune...");
+        } else if (strncmp(note, "G", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for G tune...");
             send_messagef("t %s\n", note);
-        } else if (strncmp(note, "B3", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for B3 tune...");
+        } else if (strncmp(note, "B", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for B tune...");
             send_messagef("t %s\n", note);
-        } else if (strncmp(note, "E4", 2) == 0) {
-            shell_print(shell, "Sending command over bluetooth to sense for E4 tune...");
+        } else if (strncmp(note, "EH", 2) == 0) {
+            shell_print(shell, "Sending command over bluetooth to sense for EH tune...");
             send_messagef("t %s\n", note);
         } else {
             shell_print(shell, "Unknown note: %s", note);
@@ -90,22 +91,33 @@ SHELL_CMD_REGISTER(tune, NULL, "Sets what needs to be tuned", tune_cmd);
 
 int main(void)
 {
-    bt_msg_t rx;
+    bt_msg_t rx;                       /* message popped from k_msgq      */
+    float     freq     = 0.0f;         /* numeric field                   */
+    char      note[3]  = "";           /* two-char string + NUL           */
 
     printk("Main starting, launching BT thread\n");
     bluetooth_thread_start();
 
     while (1) {
-        /* Block until next BLE message arrives */
         if (k_msgq_get(&bt_msgq, &rx, K_FOREVER) == 0) {
-            /* rx.data contains a NUL-terminated ASCII string */
-            float meas = strtof((char *)rx.data, NULL);
+            char *ptr   = (char *)rx.data;
+            char *endp;
+            freq = strtof(ptr, &endp);                  /* converts “440.00”   */
+                                                       /* returns ptr to space */
 
-            /* Apply Kalman filter */
-            float filt = kalman_update(meas);
+            while (isspace((unsigned char)*endp)) { ++endp; }
 
-            /* Print raw and filtered values */
-            printk("Meas: %.2f Hz, Filt: %.2f Hz\n", meas, filt);
+            size_t i = 0;
+            while (i < 2 && *endp && !isspace((unsigned char)*endp)) {
+                note[i++] = *endp++;
+            }
+            note[i] = '\0';
+            if (i == 0) {
+                printk("Malformed frame: '%.*s'\n", rx.len, rx.data);
+                continue;
+            }
+            float filt = kalman_update(freq);
+            printk("%.2f %s\n", filt, note);
         }
     }
     return 0;
