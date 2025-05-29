@@ -1,0 +1,19 @@
+/ {
+    aliases {
+        rgbclk = &rgb_clk;
+        rgbdata = &rgb_data;
+        rtc = &rtc;
+    };
+
+    gpios {
+        compatible = "gpio-leds";
+        rgb_clk: clk {
+            gpios = <&gpiob 2 GPIO_ACTIVE_HIGH>;
+        };
+
+        rgb_data: data {
+            gpios = <&gpioa 4 GPIO_ACTIVE_HIGH>;
+        };
+    };
+};
+
